@@ -1,0 +1,1 @@
+# Rappresentazione grafica della convergenza dei numeri complessi nella rappresentazione del frattale di Julia
