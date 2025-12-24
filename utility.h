@@ -13,10 +13,11 @@ typedef struct Point {
     float x;
     float y;
     float z;
+    int iter;
     char type;
 } Point;
 
 //  Methods
-SDL_Window* SDL_CreateWindow();
-SDL_Renderer* createRenderer();
+SDL_Window* createWindow();
+SDL_Renderer* createRenderer(SDL_Window* window);
 void drawPoint(Point* point);
