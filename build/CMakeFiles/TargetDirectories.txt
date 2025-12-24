@@ -1,0 +1,3 @@
+/home/darioguidi/Pojects/Frattali/julia_fractal/build/CMakeFiles/julia.dir
+/home/darioguidi/Pojects/Frattali/julia_fractal/build/CMakeFiles/edit_cache.dir
+/home/darioguidi/Pojects/Frattali/julia_fractal/build/CMakeFiles/rebuild_cache.dir

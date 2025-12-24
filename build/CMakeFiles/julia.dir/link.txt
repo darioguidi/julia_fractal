@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/julia.dir/main.c.o CMakeFiles/julia.dir/utility.c.o CMakeFiles/julia.dir/function.c.o -o julia
