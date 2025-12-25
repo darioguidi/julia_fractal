@@ -25,18 +25,12 @@ int main()
 
     // Variabili
     int running = 1;
+    int iter_max = 10;
     int gauss_shape = WINDOW_WIDTH*WINDOW_HEIGHT;
     int chooice;
     
-    float mouseX, mouseY;
+    float mouseX, mouseY, c_real, c_img;
     float radius = 100.0f;
-
-    
-    ComplexNumber* c = malloc(sizeof(ComplexNumber));
-    if (c == NULL) {
-        printf("Errore nella creazione del numero complesso \n");
-        return 0;
-    }
 
     // Piano complesso (Piano di Gauss)
     Point* gauss_plan = (Point*) malloc(sizeof(Point) * (gauss_shape));
@@ -52,15 +46,17 @@ int main()
 
     switch(chooice){
         case 1 :
-            c->real = 1;
-            c->img = 1;
+            c_real = 1;
+            c_img = 1;
             break;
     }
 
     // Creare lo spazio di Gauss
     drawGaussPlann(renderer, gauss_plan, gauss_shape);
     drawCirconference(renderer, gauss_plan, gauss_shape, radius);
-    drawComplexCircle(renderer, 0, 0, c);
+
+    Point* head = NULL;
+    int isDragging = 0;
 
     // Creazione oggetto SDL_Event per gestione della finestra
     SDL_Event event;
@@ -75,10 +71,29 @@ int main()
                 running = 0;
             }
 
-            // Movimento del mouse
+            // Quando premo il tasto del mouse
+            if(event.type == SDL_MOUSEBUTTONDOWN){
+                if(event.button.button == SDL_BUTTON_LEFT){
+                    isDragging = 1;
+
+                    mouseX = event.button.x;
+                    mouseY = event.button.y;
+                }
+            }
+
+            // Quando rilascio il tasto del mouse
+            if(event.type == SDL_MOUSEBUTTONUP){
+                if(event.button.button == SDL_BUTTON_LEFT){
+                    isDragging = 0;
+                }
+            }
+
+            // Movimento del mouse: aggiorna solo se sto trascinando
             if(event.type == SDL_MOUSEMOTION){
-                mouseX = event.motion.x;
-                mouseY = event.motion.y;
+                if(isDragging){
+                    mouseX = event.motion.x;
+                    mouseY = event.motion.y;
+                }
             }
         }
 
@@ -96,13 +111,27 @@ int main()
             }
         }
 
-        // Aggiorno la posizione del cerchio al centro
-        drawComplexCircle(renderer, mouseX, mouseY, c);
+        // 2. Gestione della traiettoria dinamica
+        if (isDragging) {
+            // Libera la memoria della traiettoria precedente
+            if (head != NULL) {
+                freeComplexList(head);
+            }
+            
+            // Calcola la nuova traiettoria e assegna la nuova testa
+            head = calculateComplexValues(mouseX, mouseY, c_real, c_img, iter_max);
+        }
+
+        // 3. Disegna la traiettoria se esiste
+        if (head != NULL) {
+            drawComplexvalues(renderer, head);
+        }
 
         SDL_RenderPresent(renderer);
     }
 
     free(gauss_plan);
+    free(head);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();

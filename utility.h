@@ -10,6 +10,9 @@
 // Define
 #define WINDOW_WIDTH 800 // [-8, 8]
 #define WINDOW_HEIGHT 800 //[-8, 8]
+#define ZOOM 200.0f
+#define GAUSS_CENTER_X (WINDOW_WIDTH/2) // Origine degli assi (x)
+#define GAUSS_CENTER_Y (WINDOW_HEIGHT/2) // Origine degli assi (y)
 #define RECT_SIZE 2
 
 // Struct
@@ -20,12 +23,9 @@ typedef struct Point {
     float img;
     int iter;
     char type;
+    struct Point* nextComplex;
 } Point;
 
-typedef struct ComplexNumber {
-    float real;
-    float img;
-} ComplexNumber;
 
 //  Methods
 SDL_Window* createWindow();

@@ -6,9 +6,7 @@ void drawGaussPlann(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shape)
     // Debug
     // printf("Len di Gauss Plan: %d", gauss_shape);
 
-    // Origine degli assi
-    float gauss_center_x = WINDOW_WIDTH/2;
-    float gauss_center_y = WINDOW_HEIGHT/2;
+
     // float zoom = 200.0f;
 
     // Creazione Piano 
@@ -19,13 +17,13 @@ void drawGaussPlann(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shape)
             int idx = (j * WINDOW_WIDTH) + i;
             if (idx >= gauss_shape) continue;
 
-            gauss_plan[idx].real = (i-gauss_center_x);
-            gauss_plan[idx].img = (gauss_center_y-j);
+            gauss_plan[idx].real = (i-GAUSS_CENTER_X);
+            gauss_plan[idx].img = (GAUSS_CENTER_Y-j);
 
             // Ogni punto partirà con il valore iter impostato a 0
             gauss_plan[idx].iter = 0;
 
-            if (j == gauss_center_y || i == gauss_center_x){
+            if (j == GAUSS_CENTER_Y || i == GAUSS_CENTER_X){
                 gauss_plan[idx].type = 'a';
             }else{
                 gauss_plan[idx].type = 'p';
@@ -58,24 +56,67 @@ void drawCirconference(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shap
 
 }
 
-
-void drawComplexCircle(SDL_Renderer* renderer, float delta_real, float delta_img, ComplexNumber* c)
+Point* calculateComplexValues(float mouse_x, float mouse_y, float c_real, float c_img, int iter_max)
 {
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); 
-    
-    int complex_radius = 10;
-    for (int x = delta_real - complex_radius; x <= delta_real + complex_radius; x++) {
-        for (int y = delta_img - complex_radius; y <= delta_img + complex_radius; y++) {
+    float z_real = (mouse_x - GAUSS_CENTER_X);
+    float z_img = (GAUSS_CENTER_Y - mouse_y);
+
+    Point* head = malloc(sizeof(Point));
+    if (head == NULL) return NULL;
+
+    head->real = z_real;
+    head->img = z_img;
+    head->nextComplex = NULL;
+
+    Point* current = head;
+
+    for (int i = 0; i < iter_max; i++) {
+        float real = current->real;
+        float img = current->img;
+
+        if ((real * real + img * img) < 4.0f) {
             
-            // Distanza dal centro 
-            float dx = x - delta_real; 
-            float dy = y - delta_img;  
-            
-            // x^2 + y^2 <= r^2
-            if ((dx * dx + dy * dy) <= (complex_radius * complex_radius)) {
-                SDL_RenderDrawPoint(renderer, x, y);
-            }
+            float next_r = (real * real - img * img) + c_real;
+            float next_it = (2 * real * img) + c_img;
+
+            Point* nextNode = malloc(sizeof(Point));
+            nextNode->real = next_r;
+            nextNode->img = next_it;
+            nextNode->nextComplex = NULL;
+
+            current->nextComplex = nextNode;
+            current = nextNode;
+        } else {
+            break; 
         }
+    }
+
+    return head;
+}
+
+void freeComplexList(Point* head) {
+    Point* current = head;
+    while (current != NULL) {
+        Point* next = current->nextComplex;
+        free(current);
+        current = next;
+    }
+}
+
+void drawComplexvalues(SDL_Renderer* renderer, Point* head)
+{
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+    Point* current = head;
+
+    while (current != NULL) {
+        int screen_x = (int)current->real + GAUSS_CENTER_X;
+        int screen_y = (int)GAUSS_CENTER_Y - (int)current->img;
+
+        SDL_Rect rect = {screen_x - 1, screen_y - 1, 3, 3};
+        SDL_RenderFillRect(renderer, &rect);
+
+        current = current->nextComplex;
     }
 }
 
