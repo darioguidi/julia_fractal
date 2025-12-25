@@ -1,6 +1,7 @@
 CMakeFiles/julia.dir/main.c.o: \
  /home/darioguidi/Pojects/Frattali/julia_fractal/main.c \
  /usr/include/stdc-predef.h \
+ /home/darioguidi/Pojects/Frattali/julia_fractal/function.h \
  /home/darioguidi/Pojects/Frattali/julia_fractal/utility.h \
  /usr/include/stdio.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

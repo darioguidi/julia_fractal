@@ -26,9 +26,7 @@ SDL_Renderer* createRenderer(SDL_Window* window)
     return renderer;
 }
 
-void drawPoint(Point* point)
+void drawPoint(SDL_Renderer* renderer, Point* point)
 {
 
-
-    return 0;
 }

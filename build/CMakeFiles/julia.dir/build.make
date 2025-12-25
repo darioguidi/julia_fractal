@@ -124,6 +124,7 @@ julia: CMakeFiles/julia.dir/main.c.o
 julia: CMakeFiles/julia.dir/utility.c.o
 julia: CMakeFiles/julia.dir/function.c.o
 julia: CMakeFiles/julia.dir/build.make
+julia: /usr/lib64/libSDL2-2.0.so.0.3000.11
 julia: CMakeFiles/julia.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/darioguidi/Pojects/Frattali/julia_fractal/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable julia"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/julia.dir/link.txt --verbose=$(VERBOSE)

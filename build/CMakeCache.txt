@@ -198,6 +198,9 @@ Julia Fractal_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Julia Fractal_SOURCE_DIR:STATIC=/home/darioguidi/Pojects/Frattali/julia_fractal
 
+//The directory containing a CMake configuration file for SDL2.
+SDL2_DIR:PATH=/usr/lib64/cmake/SDL2
+
 
 ########################
 # INTERNAL cache entries
