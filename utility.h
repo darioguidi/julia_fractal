@@ -16,15 +16,21 @@
 // type : "a" -> asse
 // type : "p" -> valori persi
 typedef struct Point {
-    float x;
-    float y;
+    float real;
+    float img;
     int iter;
     char type;
 } Point;
+
+typedef struct ComplexNumber {
+    float real;
+    float img;
+} ComplexNumber;
 
 //  Methods
 SDL_Window* createWindow();
 SDL_Renderer* createRenderer(SDL_Window* window);
 void drawPoint(SDL_Renderer* renderer, Point* point, int x, int y);
+
 
 #endif

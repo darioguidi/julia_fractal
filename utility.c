@@ -32,9 +32,12 @@ void drawPoint(SDL_Renderer* renderer, Point* point, int x, int y)
     if (point->type=='a'){
         SDL_SetRenderDrawColor(renderer, 255,255,255,255);
     }else if (point->type=='p'){
-        SDL_SetRenderDrawColor(renderer, 0,0,0,255);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    }else if (point->type == 'r'){
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     }
 
     SDL_Rect rect = (SDL_Rect) {x, y, RECT_SIZE, RECT_SIZE};
     SDL_RenderFillRect(renderer, &rect);
 }
+

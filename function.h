@@ -7,7 +7,10 @@
 
 // Methods
 void drawGaussPlann(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shape);
-void drawCirconference();
+void drawCirconference(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shape, int radius);
+void drawComplexCircle(SDL_Renderer* renderer, float delta_real, float delta_img, ComplexNumber* c);
+
+
 void drawItereactions();
 void drawFractal();
 
