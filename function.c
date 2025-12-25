@@ -30,8 +30,7 @@ void drawGaussPlann(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shape)
                 gauss_plan[idx].type = 'p';
             }
 
-            // Disegno punto dell'asse 
-            drawPoint(renderer, &gauss_plan[idx], i, j);
+
         }  
     }
 }
@@ -58,8 +57,11 @@ void drawCirconference(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shap
 
             int distance = pow(gauss_plan[idx].x, 2)+ pow(gauss_plan[idx].y, 2);
 
-            if (distance <= )
+            if ((distance <= pow(radius+theta, 2)) && (distance >= pow(radius-theta, 2))){
+                gauss_plan[idx].type = 'a';
+            }
         }
     }
 
 }
+

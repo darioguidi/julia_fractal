@@ -8,8 +8,8 @@
 #include <SDL2/SDL.h>
 
 // Define
-#define WINDOW_WIDTH 400 // [-4, 4]
-#define WINDOW_HEIGHT 400 //[-4, 4]
+#define WINDOW_WIDTH 800 // [-8, 8]
+#define WINDOW_HEIGHT 800 //[-8, 8]
 #define RECT_SIZE 2
 
 // Struct

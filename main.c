@@ -40,6 +40,7 @@ int main()
 
     // Creare lo spazio di Gauss
     drawGaussPlann(renderer, gauss_plan, gauss_shape);
+    drawCirconference(renderer, gauss_plan, gauss_shape);
 
     // Creazione oggetto SDL_Event per gestione della finestra
     SDL_Event event;
