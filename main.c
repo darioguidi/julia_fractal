@@ -38,6 +38,9 @@ int main()
 
     scanf("%d", &chooice);
 
+    // Creare lo spazio di Gauss
+    drawGaussPlann(renderer, gauss_plan, gauss_shape);
+
     // Creazione oggetto SDL_Event per gestione della finestra
     SDL_Event event;
     
@@ -51,15 +54,21 @@ int main()
         }
 
         // Render del contenuto
-        SDL_SetRenderDrawColor(0,0,0,0,SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(renderer, 0,0,0,255);
         SDL_RenderClear(renderer);
 
-        // Creare lo spazio di Gauss
-        drawGaussPlann(renderer, gauss_plan, gauss_shape);
+        for (int i = 0; i < WINDOW_WIDTH; i++){
+            for (int j = 0; j < WINDOW_HEIGHT; j++){
+                int idx = (j * WINDOW_WIDTH) + i;
+                if (idx >= gauss_shape) continue;
+                drawPoint(renderer, &gauss_plan[idx], i , j);
+            }
+        }
 
         SDL_RenderPresent(renderer);
     }
 
+    free(gauss_plan);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();

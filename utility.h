@@ -10,6 +10,7 @@
 // Define
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 800
+#define RECT_SIZE 2
 
 // Struct
 // type : "a" -> asse
@@ -24,6 +25,6 @@ typedef struct Point {
 //  Methods
 SDL_Window* createWindow();
 SDL_Renderer* createRenderer(SDL_Window* window);
-void drawPoint(SDL_Renderer* renderer, Point* point);
+void drawPoint(SDL_Renderer* renderer, Point* point, int x, int y);
 
 #endif

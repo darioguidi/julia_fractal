@@ -26,7 +26,15 @@ SDL_Renderer* createRenderer(SDL_Window* window)
     return renderer;
 }
 
-void drawPoint(SDL_Renderer* renderer, Point* point)
+void drawPoint(SDL_Renderer* renderer, Point* point, int x, int y)
 {
+    // Colorore del pizel in base al "type" ed al numero di iterazioni "iter"
+    if (point->type=='a'){
+        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
+    }else if (point->type=='p'){
+        SDL_SetRenderDrawColor(renderer, 0,0,0,255);
+    }
 
+    SDL_Rect rect = (SDL_Rect) {x, y, RECT_SIZE, RECT_SIZE};
+    SDL_RenderFillRect(renderer, &rect);
 }

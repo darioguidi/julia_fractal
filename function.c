@@ -20,17 +20,18 @@ void drawGaussPlann(SDL_Renderer* renderer, Point* gauss_plan, int gauss_shape)
 
             gauss_plan[idx].x = (i-gauss_center_x);
             gauss_plan[idx].y = (gauss_center_y-j);
+
             // Ogni punto partirà con il valore iter impostato a 0
             gauss_plan[idx].iter = 0;
 
             if (j == gauss_center_y || i == gauss_center_x){
-                gauss_plan[idx].type = "a";
+                gauss_plan[idx].type = 'a';
             }else{
-                gauss_plan[idx].type == "p";
+                gauss_plan[idx].type = 'p';
             }
 
             // Disegno punto dell'asse 
-            drawPoint(renderer, &gauss_plan[idx]);
+            drawPoint(renderer, &gauss_plan[idx], i, j);
         }  
     }
 }
