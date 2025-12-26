@@ -8,8 +8,8 @@
 #include <SDL2/SDL.h>
 
 // Define
-#define MATH_RANGE 4.0f
-#define WINDOW_WIDTH 600 // [-3, 3]
+#define MATH_RANGE 3.5f
+#define WINDOW_WIDTH 900 // [-3, 3]
 #define WINDOW_HEIGHT (WINDOW_WIDTH) // [-3, 3]
 #define WIND_ZOOM (WINDOW_WIDTH / MATH_RANGE)
 #define GAUSS_CENTER_X (WINDOW_WIDTH/2) // Origine degli assi (x)

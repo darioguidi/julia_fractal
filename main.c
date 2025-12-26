@@ -58,6 +58,14 @@ int main()
             c_real = -0.8;
             c_img = 0.156;
             break;
+        case 4: 
+            c_real = 0.0; 
+            c_img = 1.0; 
+            break;
+        default: 
+            c_real = -0.8; 
+            c_img = 0.156; 
+            break;
     }
 
     // Creare lo spazio di Gauss
