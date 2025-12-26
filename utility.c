@@ -1,5 +1,6 @@
 #include "utility.h"
 
+// Metodo per la creazione di un puntatore SDL_Window
 SDL_Window* createWindow()
 {
     SDL_Window* window = SDL_CreateWindow(
@@ -14,7 +15,7 @@ SDL_Window* createWindow()
     return window;
 }
 
-
+// Metodo per la creazione di un puntatore SDL_Renderer
 SDL_Renderer* createRenderer(SDL_Window* window)
 {
     SDL_Renderer* renderer = SDL_CreateRenderer(
@@ -26,14 +27,35 @@ SDL_Renderer* createRenderer(SDL_Window* window)
     return renderer;
 }
 
+// Metodo per randerizzare un singolo punto -> Rect a schermo
+// Colorore del pixel in base al "type" ed al numero di iterazioni "iter"
+// a : nero
+// p : bianco
+// r : rosso
 void drawPoint(SDL_Renderer* renderer, Point* point, int x, int y)
 {
-    // Colorore del pizel in base al "type" ed al numero di iterazioni "iter"
-    if (point->type=='a'){
-        SDL_SetRenderDrawColor(renderer, 255,255,255,255);
-    }else if (point->type=='p'){
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    }else if (point->type == 'r'){
+    // Set Render Color
+    if (point->type == 'a') {
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    } 
+    else if (point->type == 'p') {
+        if (point->iter == 0) {
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        } else {
+            // Effetto magma
+            int r = (point->iter * 8);
+            if (r > 255) r = 255;
+
+            int g = (point->iter > 15) ? (point->iter - 15) * 5 : 0;
+            if (g > 255) g = 255;
+
+            int b = (point->iter > 40) ? (point->iter - 40) * 2 : 0;
+            if (b > 255) b = 255;
+
+            SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+        }
+    } 
+    else if (point->type == 'r') {
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     }
 

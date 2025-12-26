@@ -25,12 +25,12 @@ int main()
 
     // Variabili
     int running = 1;
-    int iter_max = 10;
+    int iter_max_gauss = 100;
+    int iter_max = 100;
     int gauss_shape = WINDOW_WIDTH*WINDOW_HEIGHT;
     int chooice;
     
     float mouseX, mouseY, c_real, c_img;
-    float radius = 100.0f;
 
     // Piano complesso (Piano di Gauss)
     Point* gauss_plan = (Point*) malloc(sizeof(Point) * (gauss_shape));
@@ -41,26 +41,41 @@ int main()
 
     // Scelta del valore complesso da passare alla funzione per la generazione del frattale
     printf("Scegliere quale valore complesso utilizzare per la generazione del frattale di Julia \n");
-    printf("1 -> c=1+i1 \n2 -> c=−0.123+0.745i \n3 -> c=−0.4+0.6i\n");
+    printf("1 -> c=−0.123+0.745i \n2 -> c=−0.4+0.6i\n");
     scanf("%d", &chooice);
 
+    // Assegnazioni dei valori del frattale di Julia da andare a generare
     switch(chooice){
         case 1 :
-            c_real = 1;
-            c_img = 1;
+            c_real = -0.123;
+            c_img = 0.745;
+            break;
+        case 2 : 
+            c_real = -0.4;
+            c_img = 0.6;
+            break;
+        case 3:
+            c_real = -0.8;
+            c_img = 0.156;
             break;
     }
 
     // Creare lo spazio di Gauss
-    drawGaussPlann(renderer, gauss_plan, gauss_shape);
-    drawCirconference(renderer, gauss_plan, gauss_shape, radius);
+    drawGaussPlann(renderer, gauss_plan, gauss_shape, iter_max_gauss, c_real, c_img);
 
-    Point* head = NULL;
+    // Raggio circonferenza in valore matematico r = 1
+    float radius = 1.0f;
+    //drawCirconference(renderer, gauss_plan, gauss_shape, radius);
+
+    // Variabili gestione eventi finestra
     int isDragging = 0;
+
+    // Variabili gestione calcoli finestra
+    Point* head = NULL;
 
     // Creazione oggetto SDL_Event per gestione della finestra
     SDL_Event event;
-    
+
     while(running){
 
         // Gestione eventi
@@ -70,6 +85,28 @@ int main()
             if(event.type == SDL_QUIT){
                 running = 0;
             }
+            
+            /*
+            if (event.type == SDL_WINDOWEVENT) {
+                if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+                    int new_w = event.window.data1;
+                    int new_h = event.window.data2;
+
+                    
+                    // window_width = new_w; 
+                    // window_height = new_h;
+
+                    // 2. Libera e rialloca gauss_plan
+                    free(gauss_plan);
+                    gauss_shape = new_w * new_h;
+                    gauss_plan = (Point*) malloc(sizeof(Point) * gauss_shape);
+
+                    // 3. Ricalcola il piano e la circonferenza con le nuove dimensioni
+                    drawGaussPlann(renderer, gauss_plan, gauss_shape);
+                    drawCirconference(renderer, gauss_plan, gauss_shape, radius);
+                }
+            }
+            */
 
             // Quando premo il tasto del mouse
             if(event.type == SDL_MOUSEBUTTONDOWN){
@@ -111,18 +148,14 @@ int main()
             }
         }
 
-        // 2. Gestione della traiettoria dinamica
-        if (isDragging) {
-            // Libera la memoria della traiettoria precedente
-            if (head != NULL) {
+        if (isDragging){
+            if (head != NULL){
                 freeComplexList(head);
+                head = NULL;
             }
-            
-            // Calcola la nuova traiettoria e assegna la nuova testa
+
             head = calculateComplexValues(mouseX, mouseY, c_real, c_img, iter_max);
         }
-
-        // 3. Disegna la traiettoria se esiste
         if (head != NULL) {
             drawComplexvalues(renderer, head);
         }
@@ -131,7 +164,6 @@ int main()
     }
 
     free(gauss_plan);
-    free(head);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
