@@ -1,5 +1,8 @@
 #include "function.h"
 
+window_width = WINDOW_WIDTH;
+window_height = WINDOW_HEIGHT;
+
 // Main
 int main() 
 {
@@ -36,9 +39,13 @@ int main()
     int gauss_shape = WINDOW_WIDTH*WINDOW_HEIGHT;
     int chooice;
     
+    // mouseX, mouseY : Coordinate del mouse sulla finestra
     float mouseX, mouseY, c_real, c_img;
+    
+    // Raggio circonferenza in valore matematico r = 1
+    float radius = 1.0f;
 
-    // Piano complesso (Piano di Gauss)
+    // Generazione piano complesso (Piano di Gauss)
     Point* gauss_plan = (Point*) malloc(sizeof(Point) * (gauss_shape));
     if (gauss_plan == NULL){
         printf("Errore nella attribuzione di memoria per il piano di gauss \n");
@@ -47,8 +54,10 @@ int main()
 
     // Scelta del valore complesso da passare alla funzione per la generazione del frattale
     printf("Scegliere quale valore complesso utilizzare per la generazione del frattale di Julia \n");
-    printf("1 -> c=−0.123+0.745i \n2 -> c=−0.4+0.6i\n3-> c = -0.8+0.156i\n4 -> c=0.0+1.0i\n 5 -> -0.8+0.156i");
+    printf("1 -> c=−0.123+0.745i \n2 -> c=−0.4+0.6i \n3-> c = -0.8+0.156i \n4 -> c=0.0+1.0i \n 5 -> -0.8+0.156i");
     scanf("%d", &chooice);
+
+    // Porzione di codice dedicata alla generazione di due valori float, generati in un intervallo di valori matematici pari a [-1,1]
 
     srand((unsigned int)time(NULL));
 
@@ -106,19 +115,21 @@ int main()
     // Creare lo spazio di Gauss
     drawGaussPlann(renderer, gauss_plan, gauss_shape, iter_max_gauss, c_real, c_img);
 
-    // Raggio circonferenza in valore matematico r = 1
-    float radius = 1.0f;
-    //drawCirconference(renderer, gauss_plan, gauss_shape, radius);
+    // Metodo per il disegno della circonferenza unitaria
+    // drawCirconference(renderer, gauss_plan, gauss_shape, radius);
 
     // Variabili gestione eventi finestra
+    // isDragging : Stabilisce se si sta effettuando un evento di dragging con il mouse, se lo stato è "Attivo"
+    // allora viene liberato l'array dinamico e vengono ricalcolati i punti della iterazione
     int isDragging = 0;
 
-    // Variabili gestione calcoli finestra
+    // Testa dell'array dinamico per il calcolo dei risultati dati dalla iterazione della funzione z = z^2 + c
     Point* head = NULL;
 
     // Creazione oggetto SDL_Event per gestione della finestra
     SDL_Event event;
 
+    // Finestra per la visualizzazione della finestra, render, gestione eventi
     while(running){
 
         // Gestione eventi
@@ -136,17 +147,14 @@ int main()
                     int new_h = event.window.data2;
 
                     
-                    // window_width = new_w; 
-                    // window_height = new_h;
+                    window_width = new_w; 
+                    window_height = new_h;
 
-                    // 2. Libera e rialloca gauss_plan
                     free(gauss_plan);
                     gauss_shape = new_w * new_h;
                     gauss_plan = (Point*) malloc(sizeof(Point) * gauss_shape);
 
-                    // 3. Ricalcola il piano e la circonferenza con le nuove dimensioni
-                    drawGaussPlann(renderer, gauss_plan, gauss_shape);
-                    drawCirconference(renderer, gauss_plan, gauss_shape, radius);
+                    drawGaussPlann(renderer, gauss_plan, gauss_shape, iter_max_gauss, c_real,);
                 }
             }
             */
@@ -191,6 +199,7 @@ int main()
             }
         }
 
+        // Gestione evento dragging mouse per calcolo valori complessi della iterazione e relativo render
         if (isDragging){
             if (head != NULL){
                 freeComplexList(head);
@@ -200,13 +209,16 @@ int main()
             head = calculateComplexValues(mouseX, mouseY, c_real, c_img, iter_max);
         }
         if (head != NULL) {
+            // Render Array Dinamico
             drawComplexvalues(renderer, head);
         }
 
+        // Render video del risultato
         SDL_RenderPresent(renderer);
     }
 
     free(gauss_plan);
+    free(head);
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
