@@ -82,6 +82,7 @@ CMakeFiles/julia.dir/function.c.o: /home/darioguidi/Pojects/Frattali/julia_fract
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time.h \
   /usr/include/bits/time64.h \
   /usr/include/bits/timesize.h \
   /usr/include/bits/types.h \
@@ -99,8 +100,10 @@ CMakeFiles/julia.dir/function.c.o: /home/darioguidi/Pojects/Frattali/julia_fract
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_itimerspec.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_tm.h \
   /usr/include/bits/types/time_t.h \
   /usr/include/bits/types/timer_t.h \
   /usr/include/bits/types/wint_t.h \
@@ -127,6 +130,7 @@ CMakeFiles/julia.dir/function.c.o: /home/darioguidi/Pojects/Frattali/julia_fract
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/types.h \
+  /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/adxintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/amxbf16intrin.h \
@@ -314,6 +318,7 @@ CMakeFiles/julia.dir/main.c.o: /home/darioguidi/Pojects/Frattali/julia_fractal/m
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time.h \
   /usr/include/bits/time64.h \
   /usr/include/bits/timesize.h \
   /usr/include/bits/types.h \
@@ -331,8 +336,10 @@ CMakeFiles/julia.dir/main.c.o: /home/darioguidi/Pojects/Frattali/julia_fractal/m
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_itimerspec.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_tm.h \
   /usr/include/bits/types/time_t.h \
   /usr/include/bits/types/timer_t.h \
   /usr/include/bits/types/wint_t.h \
@@ -359,6 +366,7 @@ CMakeFiles/julia.dir/main.c.o: /home/darioguidi/Pojects/Frattali/julia_fractal/m
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/types.h \
+  /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/adxintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/amxbf16intrin.h \
@@ -545,6 +553,7 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time.h \
   /usr/include/bits/time64.h \
   /usr/include/bits/timesize.h \
   /usr/include/bits/types.h \
@@ -562,8 +571,10 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
   /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_itimerspec.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_tm.h \
   /usr/include/bits/types/time_t.h \
   /usr/include/bits/types/timer_t.h \
   /usr/include/bits/types/wint_t.h \
@@ -590,6 +601,7 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/types.h \
+  /usr/include/time.h \
   /usr/include/wchar.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/adxintrin.h \
   /usr/lib/gcc/x86_64-redhat-linux/14/include/amxbf16intrin.h \
@@ -703,8 +715,6 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 
 /usr/lib/gcc/x86_64-redhat-linux/14/include/xsavecintrin.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/14/include/x86gprintrin.h:
-
 /usr/lib/gcc/x86_64-redhat-linux/14/include/xsavesintrin.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/14/include/vaesintrin.h:
@@ -742,8 +752,6 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 /usr/lib/gcc/x86_64-redhat-linux/14/include/fmaintrin.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/14/include/f16cintrin.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/14/include/enqcmdintrin.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/14/include/emmintrin.h:
 
@@ -816,6 +824,16 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 /usr/lib/gcc/x86_64-redhat-linux/14/include/amxcomplexintrin.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/14/include/amxbf16intrin.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/14/include/x86gprintrin.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/sys/select.h:
 
 /usr/include/alloca.h:
 
@@ -1033,8 +1051,6 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 
 /usr/include/bits/math-vector.h:
 
-/usr/include/bits/struct_rwlock.h:
-
 /usr/lib/gcc/x86_64-redhat-linux/14/include/tsxldtrkintrin.h:
 
 /usr/include/bits/types/time_t.h:
@@ -1069,6 +1085,8 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 
 /usr/include/bits/types/__locale_t.h:
 
+/usr/include/bits/time.h:
+
 /usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/types/__mbstate_t.h:
@@ -1085,9 +1103,21 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 
 /usr/include/bits/types/mbstate_t.h:
 
+/usr/include/bits/struct_rwlock.h:
+
+/usr/include/bits/types/struct_itimerspec.h:
+
 /usr/lib/gcc/x86_64-redhat-linux/14/include/avx512bitalgintrin.h:
 
 /usr/include/bits/types/struct_timespec.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/14/include/enqcmdintrin.h:
+
+/usr/include/bits/types/struct_tm.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/14/include/cetintrin.h:
+
+/usr/include/bits/wchar.h:
 
 /usr/include/bits/types/timer_t.h:
 
@@ -1112,10 +1142,6 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 /usr/include/bits/timesize.h:
 
 /usr/include/bits/waitstatus.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/14/include/cetintrin.h:
-
-/usr/include/bits/wchar.h:
 
 /home/darioguidi/Pojects/Frattali/julia_fractal/utility.c:
 
@@ -1156,9 +1182,3 @@ CMakeFiles/julia.dir/utility.c.o: /home/darioguidi/Pojects/Frattali/julia_fracta
 /usr/include/stdlib.h:
 
 /usr/include/sys/cdefs.h:
-
-/usr/include/sys/select.h:
-
-/usr/include/sys/types.h:
-
-/usr/include/wchar.h:

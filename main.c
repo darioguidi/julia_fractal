@@ -1,6 +1,6 @@
 #include "function.h"
 
-// Main del progetto
+// Main
 int main() 
 {
     // Inizializzazione SDL
@@ -24,6 +24,12 @@ int main()
     }
 
     // Variabili
+    // running : variabile impostat su uno stato booleano "Attivo", permette l'apertura della finestra e del render. 
+    // Lo stato a 0 "Inattivo" viene dichiarato nel momento della chiusura della finestra, interrompendone la visualizzazione
+    // iter_max_gauss : Indica il numero di iterazioni da utilizzare in fase di creazione del frattale nel piano di gauss
+    // iter_max : Indica il numero di iterazioni da svolgere per il calcolo dei risultati complessi dati dall'applicazione della funzione z = z^2 + c
+    // gauss_shape : Indica la dimensione del piano di numeri complessi (gauss)
+    // chooice : Indica lascleta del valore complesso individuato dall'utente per la scelta del frattae da generare
     int running = 1;
     int iter_max_gauss = 100;
     int iter_max = 100;
@@ -41,8 +47,13 @@ int main()
 
     // Scelta del valore complesso da passare alla funzione per la generazione del frattale
     printf("Scegliere quale valore complesso utilizzare per la generazione del frattale di Julia \n");
-    printf("1 -> c=−0.123+0.745i \n2 -> c=−0.4+0.6i\n");
+    printf("1 -> c=−0.123+0.745i \n2 -> c=−0.4+0.6i\n3-> c = -0.8+0.156i\n4 -> c=0.0+1.0i\n 5 -> -0.8+0.156i");
     scanf("%d", &chooice);
+
+    srand((unsigned int)time(NULL));
+
+    float random_real = ((float)rand() / (float)RAND_MAX) * 2.0f - 1.0f;
+    float random_img = ((float)rand() / (float)RAND_MAX) * 2.0f - 1.0f;
 
     // Assegnazioni dei valori del frattale di Julia da andare a generare
     switch(chooice){
@@ -62,6 +73,30 @@ int main()
             c_real = 0.0; 
             c_img = 1.0; 
             break;
+        case 5:
+            c_real = 0.1348;
+            c_img = -0.67;
+            break;
+        case 6 : 
+            c_real = -0.521111;
+            c_img = -0.45679;
+            break;
+        case 7 : 
+            c_real = 0.521111;
+            c_img = 0.45679;
+            break;
+        case 8 : 
+            c_real = 0.12;
+            c_img = 0.45;
+            break;
+        case 9 : 
+            c_real = 0.29462;
+            c_img = 0.9537;
+            break;
+        case 10 : 
+            c_real = random_real;
+            c_img = random_img;
+            break;            
         default: 
             c_real = -0.8; 
             c_img = 0.156; 
